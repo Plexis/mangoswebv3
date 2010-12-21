@@ -1,0 +1,143 @@
+<!-- QuickLinks -->
+<div id="q-links">
+	<h3>Quicklinks</h3>
+	<ul>
+		<li>
+			<a href="?p=account&amp;sub=manage">Account Managment</a>
+		</li>
+		<li class="e">
+			<a href="?p=account&amp;sub=register">Account Creation</a>
+		</li>
+		<li>
+			<a href="?p=server&amp;sub=realmstatus">Realm Status</a>
+		</li>
+		<li class="e">
+			<a href="?p=support&amp;sub=faq">FAQ</a>
+		</li>
+		<li>
+			<a href="?p=support&amp;sub=howtoplay">How To Play</a>
+		</li>
+		<li class="e">
+			<a href="?p=server&amp;sub=commands">InGame Commands</a>
+		</li>
+	</ul>
+</div>
+<span class="gfxhook"></span>
+<hr>
+
+<!-- VoteLinks  -->
+
+	<div id="box3">
+		<h3>Vote System</h3>
+		<ul>
+			<li>
+				<div>
+					<center>
+						<a href="?p=vote"><img src="templates/Cataclysm_1/images/vote.png" width="264" height="247" /></a>
+						Please vote daily to earn our server reputaion help us grow in population!					</center>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<span class="gfxhook"></span>
+	<hr>
+
+<!-- Screenshot of the Momment -->
+	<div id="rightbox">
+	<h3 style="height: 20px; color: #eff0ef; font-size: 12px; letter-spacing: 1px; font-weight: bold; width: 308px; padding: 1px 0 0 8px; font-family: 'Trebuchet MS', Verdana, Arial, sans-serif;">Random Screenshot</h3>
+	<div id="innerrightbox">
+		<a href="images/screenshots/Mangosweb_scr.jpg" target="_blank"><img src="modules/ssotd/show_picture.php?filename=Mangosweb_scr.jpg&amp;gallery=screen&amp;width=282" width="282" alt="" style="border: 1px solid #333333"/></a>
+		<select onchange="window.location = options[this.selectedIndex].value" style="width: 284px;">
+			<option value="">Screenshot Galleries -&gt;</option>
+			<option value="?p=media&amp;sub=screen">Screenshot Gallery</option>
+			<option value="?p=media&amp;sub=wallp">Wallpaper Gallery</option>
+		</select>
+</div></div><!-- END SSOTD Module! -->
+
+<!-- Newcomers section -->
+	<div id="rightbox">
+		<div class="newcommer">
+			<h4>New to our server?</h4>
+			<p style="margin-bottom: -1px;">
+				Use the links below!			</p>
+			<ul>
+				<li>&nbsp; <a href="?p=support&amp;sub=howtoplay">New to our server?</a></li>
+				<li>&nbsp; <a href="?p=support&amp;sub=faq">FAQ</a></li>
+			</ul>
+		</div>
+	</div>
+<!-- usersonhomepage -->
+	<div id="box2">
+		<h3>Users on Homepage</h3>
+		<ul>
+			<li>&nbsp;</li>
+
+							<li>
+					<a href="?p=whoisonline">&nbsp;1&nbsp;</a>
+					User Online           
+				</li>
+				<li>&nbsp;</li>
+					</ul>
+	</div>
+	<span class="gfxhook"></span>
+	<hr>
+			<div id="box3">
+				<h3>Server Info</h3>
+					<ul>
+						<li>
+							<div>&nbsp;</div>
+						</li>
+						<li>
+							<div>Realm name:&nbsp;<b>MaNGOS</b></div>
+						</li>
+												<li>
+								<div>Realm status:&nbsp;
+																		<img src="templates/Cataclysm_1/images/icons/uparrow2.gif" height="15" alt="Online" /> 
+										<b style="color: rgb(35, 67, 3);">Online</b>
+																</div>
+							</li>
+												<li>
+								<div>
+									Online:&nbsp;
+									<a href="?p=server&amp;sub=playersonline&amp;changerealm_to=1">0</a>
+								</div>
+							</li>
+
+												<li>
+								<div>
+									Server IP:&nbsp;<b>127.0.0.1</b>
+								</div>
+							</li>
+												<li>
+								<div>
+									Type:&nbsp;<b>PVP</b>
+								</div>
+							</li>
+												<li>
+								<div>
+									Language:&nbsp;<b>Development</b>
+								</div>
+							</li>
+												<li>
+								<div>
+									Population:&nbsp;<b><font color="green">Low</font></b>
+								</div>
+							</li>
+												<li>
+								<div>
+									Accounts:&nbsp;<b>11 (1 Active)</b>
+								</div>
+							</li>
+
+												<li>
+								<div>
+									Characters:&nbsp;<b>1</b>
+								</div>
+							</li>
+											<li>
+							<div>&nbsp;</div>
+						</li>
+					</ul>
+			</div>
+			<span class="gfxhook"></span>
+			<hr>

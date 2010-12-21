@@ -1,0 +1,224 @@
+
+                <div id="menunews"  style="position: relative; z-index: 11;"> 
+					<div onclick="javascript:toggleNewMenu(1-1);" class="menu-button-off" id="menunews-button">
+						<span class="menunews-icon-off" id="menunews-icon">&nbsp;</span><a class="menunews-header-off" id="menunews-header"><em>Menu item</em></a><a id="menunews-collapse"></a><span class="menuentry-rightborder"></span>
+                    </div>
+                    <div id="menunews-inner">
+                        <script type="text/javascript">
+                        if (menuCookie[1-1] == 0) 
+						{
+                            document.getElementById("menunews-inner").style.display = "none";
+                            document.getElementById("menunews-button").className = "menu-button-off";
+                            document.getElementById("menunews-collapse").className = "leftmenu-pluslink";
+                            document.getElementById("menunews-icon").className = "menunews-icon-off";
+                            document.getElementById("menunews-header").className = "menunews-header-off";
+                        } 
+						else
+						{
+                            document.getElementById("menunews-inner").style.display = "block";
+                            document.getElementById("menunews-button").className = "menu-button-on";
+                            document.getElementById("menunews-collapse").className = "leftmenu-minuslink";
+                            document.getElementById("menunews-icon").className = "menunews-icon-on";
+                            document.getElementById("menunews-header").className = "menunews-header-on";
+                        }
+                        </script>
+                        <div class="leftmenu-cont-top"></div>
+                        <div class="leftmenu-cont-mid">
+                            <div class="m-left">
+                                <div class="m-right">
+                                    <div class="leftmenu-cnt" id="menucontainer1">
+                                        <ul class="mainnav">
+                                            <li style="position:relative;" id="menufiller1">
+                                                
+<div><a class="menufiller" href="./">News</a></div>
+<div><a class="menufiller" href="rss.php">RSS</a></div>
+
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="leftmenu-cont-bot"></div>
+                    </div>
+                </div>
+			
+                <div id="menuaccount"  style="position: relative; z-index: 11;"> 
+					<div onclick="javascript:toggleNewMenu(2-1);" class="menu-button-off" id="menuaccount-button">
+						<span class="menuaccount-icon-off" id="menuaccount-icon">&nbsp;</span><a class="menuaccount-header-off" id="menuaccount-header"><em>Menu item</em></a><a id="menuaccount-collapse"></a><span class="menuentry-rightborder"></span>
+                    </div>
+                    <div id="menuaccount-inner">
+                        <script type="text/javascript">
+                        if (menuCookie[2-1] == 0) 
+						{
+                            document.getElementById("menuaccount-inner").style.display = "none";
+                            document.getElementById("menuaccount-button").className = "menu-button-off";
+                            document.getElementById("menuaccount-collapse").className = "leftmenu-pluslink";
+                            document.getElementById("menuaccount-icon").className = "menuaccount-icon-off";
+                            document.getElementById("menuaccount-header").className = "menuaccount-header-off";
+                        } 
+						else
+						{
+                            document.getElementById("menuaccount-inner").style.display = "block";
+                            document.getElementById("menuaccount-button").className = "menu-button-on";
+                            document.getElementById("menuaccount-collapse").className = "leftmenu-minuslink";
+                            document.getElementById("menuaccount-icon").className = "menuaccount-icon-on";
+                            document.getElementById("menuaccount-header").className = "menuaccount-header-on";
+                        }
+                        </script>
+                        <div class="leftmenu-cont-top"></div>
+                        <div class="leftmenu-cont-mid">
+                            <div class="m-left">
+                                <div class="m-right">
+                                    <div class="leftmenu-cnt" id="menucontainer2">
+                                        <ul class="mainnav">
+                                            <li style="position:relative;" id="menufiller2">
+                                                
+<div><a class="menufiller" href="?p=admin">Admin Panel</a></div>
+<div><a class="menufiller" href="?p=account">Manage Account</a></div>
+
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="leftmenu-cont-bot"></div>
+                    </div>
+                </div>
+			
+                <div id="menuinteractive"  style="position: relative; z-index: 11;"> 
+					<div onclick="javascript:toggleNewMenu(4-1);" class="menu-button-off" id="menuinteractive-button">
+						<span class="menuinteractive-icon-off" id="menuinteractive-icon">&nbsp;</span><a class="menuinteractive-header-off" id="menuinteractive-header"><em>Menu item</em></a><a id="menuinteractive-collapse"></a><span class="menuentry-rightborder"></span>
+                    </div>
+                    <div id="menuinteractive-inner">
+                        <script type="text/javascript">
+                        if (menuCookie[4-1] == 0) 
+						{
+                            document.getElementById("menuinteractive-inner").style.display = "none";
+                            document.getElementById("menuinteractive-button").className = "menu-button-off";
+                            document.getElementById("menuinteractive-collapse").className = "leftmenu-pluslink";
+                            document.getElementById("menuinteractive-icon").className = "menuinteractive-icon-off";
+                            document.getElementById("menuinteractive-header").className = "menuinteractive-header-off";
+                        } 
+						else
+						{
+                            document.getElementById("menuinteractive-inner").style.display = "block";
+                            document.getElementById("menuinteractive-button").className = "menu-button-on";
+                            document.getElementById("menuinteractive-collapse").className = "leftmenu-minuslink";
+                            document.getElementById("menuinteractive-icon").className = "menuinteractive-icon-on";
+                            document.getElementById("menuinteractive-header").className = "menuinteractive-header-on";
+                        }
+                        </script>
+                        <div class="leftmenu-cont-top"></div>
+                        <div class="leftmenu-cont-mid">
+                            <div class="m-left">
+                                <div class="m-right">
+                                    <div class="leftmenu-cnt" id="menucontainer3">
+                                        <ul class="mainnav">
+                                            <li style="position:relative;" id="menufiller3">
+                                                
+<div><a class="menufiller" href="?p=server&sub=realmstatus">Realm Status</a></div>
+<div><a class="menufiller" href="?p=server&sub=chars">Server Characters</a></div>
+<div><a class="menufiller" href="?p=server&sub=playersonline">Players Online</a></div>
+<div><a class="menufiller" href="?p=server&sub=topkills">Top Kills</a></div>
+
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="leftmenu-cont-bot"></div>
+                    </div>
+                </div>
+			
+                <div id="menucommunity"  style="position: relative; z-index: 11;"> 
+					<div onclick="javascript:toggleNewMenu(7-1);" class="menu-button-off" id="menucommunity-button">
+						<span class="menucommunity-icon-off" id="menucommunity-icon">&nbsp;</span><a class="menucommunity-header-off" id="menucommunity-header"><em>Menu item</em></a><a id="menucommunity-collapse"></a><span class="menuentry-rightborder"></span>
+                    </div>
+                    <div id="menucommunity-inner">
+                        <script type="text/javascript">
+                        if (menuCookie[7-1] == 0) 
+						{
+                            document.getElementById("menucommunity-inner").style.display = "none";
+                            document.getElementById("menucommunity-button").className = "menu-button-off";
+                            document.getElementById("menucommunity-collapse").className = "leftmenu-pluslink";
+                            document.getElementById("menucommunity-icon").className = "menucommunity-icon-off";
+                            document.getElementById("menucommunity-header").className = "menucommunity-header-off";
+                        } 
+						else
+						{
+                            document.getElementById("menucommunity-inner").style.display = "block";
+                            document.getElementById("menucommunity-button").className = "menu-button-on";
+                            document.getElementById("menucommunity-collapse").className = "leftmenu-minuslink";
+                            document.getElementById("menucommunity-icon").className = "menucommunity-icon-on";
+                            document.getElementById("menucommunity-header").className = "menucommunity-header-on";
+                        }
+                        </script>
+                        <div class="leftmenu-cont-top"></div>
+                        <div class="leftmenu-cont-mid">
+                            <div class="m-left">
+                                <div class="m-right">
+                                    <div class="leftmenu-cnt" id="menucontainer4">
+                                        <ul class="mainnav">
+                                            <li style="position:relative;" id="menufiller4">
+                                                
+<div><a class="menufiller" href="?p=vote">Vote</a></div>
+<div><a class="menufiller" href="?p=donate">Donate</a></div>
+<div><a class="menufiller" href="?p=shop">Shop</a></div>
+<div><a class="menufiller" href="?p=whoisonline">Users Online</a></div>
+
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="leftmenu-cont-bot"></div>
+                    </div>
+                </div>
+			
+                <div id="menusupport"  style="position: relative; z-index: 11;"> 
+					<div onclick="javascript:toggleNewMenu(8-1);" class="menu-button-off" id="menusupport-button">
+						<span class="menusupport-icon-off" id="menusupport-icon">&nbsp;</span><a class="menusupport-header-off" id="menusupport-header"><em>Menu item</em></a><a id="menusupport-collapse"></a><span class="menuentry-rightborder"></span>
+                    </div>
+                    <div id="menusupport-inner">
+                        <script type="text/javascript">
+                        if (menuCookie[8-1] == 0) 
+						{
+                            document.getElementById("menusupport-inner").style.display = "none";
+                            document.getElementById("menusupport-button").className = "menu-button-off";
+                            document.getElementById("menusupport-collapse").className = "leftmenu-pluslink";
+                            document.getElementById("menusupport-icon").className = "menusupport-icon-off";
+                            document.getElementById("menusupport-header").className = "menusupport-header-off";
+                        } 
+						else
+						{
+                            document.getElementById("menusupport-inner").style.display = "block";
+                            document.getElementById("menusupport-button").className = "menu-button-on";
+                            document.getElementById("menusupport-collapse").className = "leftmenu-minuslink";
+                            document.getElementById("menusupport-icon").className = "menusupport-icon-on";
+                            document.getElementById("menusupport-header").className = "menusupport-header-on";
+                        }
+                        </script>
+                        <div class="leftmenu-cont-top"></div>
+                        <div class="leftmenu-cont-mid">
+                            <div class="m-left">
+                                <div class="m-right">
+                                    <div class="leftmenu-cnt" id="menucontainer5">
+                                        <ul class="mainnav">
+                                            <li style="position:relative;" id="menufiller5">
+                                                
+<div><a class="menufiller" href="?p=support&sub=faq">FAQ</a></div>
+
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="leftmenu-cont-bot"></div>
+                    </div>
+                </div>
+			
