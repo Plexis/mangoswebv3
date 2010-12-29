@@ -1,6 +1,8 @@
 <?php
-// RA class for MangosWebSDL. Originally from TrinMangSDK
-// Re-written and added SOAP functions by Steven Wilson (Wilson212)
+/********************************************************************************************************
+* 	RA class for MangosWebSDL. Originally from TrinMangSDK  Re-written and added SOAP functions by 		*
+*	Steven Wilson (Wilson212). Use the send function only!																			*
+/********************************************************************************************************/
 
 class RA
 {
@@ -10,7 +12,10 @@ class RA
     public $com;
 	
 	var $logFile = 'core/logs/ra.log';
+	var $debugLogFile = 'core/logs/RA_Debug.log';
+	var $debugLog = array();
 	var $consoleReturn = array();
+	var $authReturn = '';
 
 //	************************************************************
     /**
@@ -18,7 +23,16 @@ class RA
     */
     public function __construct()
     {
+		global $Config;
         $this->handle = FALSE;
+		if($Config->get('enable_debugging') == 1)
+		{
+			$this->debug = TRUE;
+		}
+		else
+		{
+			$this->debug = FALSE;
+		}
     }
 
 //	************************************************************
@@ -43,25 +57,69 @@ class RA
     */
     public function auth($user, $pass)
     {
+		global $Config;
+		
         $user = strtoupper($user);
         fwrite($this->handle, $user."\n");
-        usleep(300);
+        usleep(100);
         fwrite($this->handle, $pass."\n");
         usleep(300);
 		
 		$return = trim(fgets($this->handle));
-
-        if(strpos($return, "+") === FALSE || strpos($return, "U") === FALSE)
+		
+		// Check for error logging
+		if($this->debug == TRUE)
 		{
-			$this->authReturn = $return;
-			$this->writeLog('Telnet - AUTH Error: '.$this->authReturn);
-			return FALSE;
+			$this->debugLog[] = 'Loging in with account: '.$user;
+			$this->debugLog[] = 'Authorization return: '.$return;
 		}
-        else
-        {
-            $this->auth = TRUE;
-            return TRUE;
-        }
+
+		if($Config->get('emulator') == 'mangos')
+		{
+			if(strpos($return, "+") === FALSE)
+			{
+				$this->authReturn = $return;
+				if($this->debug == TRUE)
+				{
+					$this->debugLog[] = 'Authorization Failed.';
+					$this->writeDebugLog();
+				}
+				return FALSE;
+			}
+			else
+			{
+				// Check for error logging
+				if($this->debug == TRUE)
+				{
+					$this->debugLog[] = 'Authorization Success!';
+				}
+				$this->auth = TRUE;
+				return TRUE;
+			}
+		}
+		else
+		{
+			if(strpos($return, "failed") != FALSE)
+			{
+				$this->authReturn = $return;
+				if($this->debug == TRUE)
+				{
+					$this->debugLog[] = 'Authorization Failed.';
+					$this->writeDebugLog();
+				}
+				return FALSE;
+			}
+			else
+			{
+				// Check for error logging
+				if($this->debug == TRUE)
+				{
+					$this->debugLog[] = 'Authorization Success!';
+				}
+				$this->auth = TRUE;
+				return TRUE;
+			}
+		}
     }
 
 //	************************************************************
@@ -80,12 +138,24 @@ class RA
         $this->handle = @fsockopen($host, $port, $errno, $errstr, 3);
         if(!$this->handle)
 		{
+			// Check for error logging
+			if($this->debug == TRUE)
+			{
+				$this->debugLog[] = 'Connection to '.$host.' @ '.$port.' Failed!';
+				$this->writeDebugLog();
+			}
 			return FALSE;
 		}
         else 
 		{
 			// get the message of the day
 			$motd = fgets($this->handle);
+			
+			// Check for error logging
+			if($this->debug == TRUE)
+			{
+				$this->debugLog[] = 'Connection to '.$host.' @ '.$port.' success!';
+			}
             return TRUE;
         }
     }
@@ -95,10 +165,34 @@ class RA
 
 	private function writeLog($msg)
 	{
-		$outmsg = date('Y-m-d H:i:s')." : ".$msg."<br />\n";
+		$outmsg = date('Y-m-d H:i:s')." : ".$msg."\n";
 		
 		$file = fopen($this->logFile,'a');
 		fwrite($file, $outmsg);
+		fclose($file);
+	}
+	
+//	************************************************************	
+// Writes into the debug log file, all the debugging messages
+
+	private function writeDebugLog()
+	{
+		$date = date('Y-m-d H:i:s');
+		$outmsg = array();
+		$outmsg[] = "******************************************************************";
+		$outmsg[] = "Ra Debugging Log for date: ".$date."\n";
+		
+		foreach($this->debugLog as $log)
+		{
+			$outmsg[] = $log;
+		}
+		
+		$outmsg[] = "****************************************************************** \n";
+		$file = fopen($this->debugLogFile,'a');
+		foreach($outmsg as $msg)
+		{
+			fwrite($file, " ".$msg."\n");
+		}
 		fclose($file);
 	}
 
@@ -130,51 +224,110 @@ class RA
 			{
 				foreach($command as $cmd)
 				{
+					// Check for error logging
+					if($this->debug == TRUE)
+					{
+						$this->debugLog[] = 'Got Command: '.$cmd;					
+					}
+					
 					fwrite($this->handle, $cmd."\n");
 					sleep(1);
-					$this->consoleReturn[] = fgets($this->handle, 1024);
+					$return = fgets($this->handle, 5000);
+					$this->consoleReturn[] = $return;
+					
+					// Check for error logging
+					if($this->debug == TRUE)
+					{
+						$this->debugLog[] = 'Server Response: '.$return;					
+					}
 				}
 			}
 			else
 			{
+				// Check for error logging
+				if($this->debug == TRUE)
+				{
+					$this->debugLog[] = 'Got Command: '.$cmd;					
+				}
+					
 				fwrite($this->handle, $command."\n");
-				sleep(1);
-				$this->consoleReturn[] = fgets($this->handle, 1024);
+				$return = fgets($this->handle, 5000);
+				$this->consoleReturn[] = $return;
+				
+				// Check for error logging
+				if($this->debug == TRUE)
+				{
+					$this->debugLog[] = 'Server Response: '.$return;					
+				}
+			}
+			// Check for error logging
+			if($this->debug == TRUE)
+			{
+				$this->writeDebugLog();
 			}
 			return 1;
 		}
-		else
+		else # type is SOAP
 		{
 			$client = $this->soapHandle($shost, $remote);
-			
+			// If multiple commands
 			if(is_array($command))
 			{
 				foreach($command as $cmd)
 				{
+					// Check for error logging
+					if($this->debug == TRUE)
+					{
+						$this->debugLog[] = 'Got Command: '.$cmd;					
+					}
+					
 					try
-					{					
+					{
 						$result = $client->executeCommand(new SoapParam($cmd, "command"));
 						$this->consoleReturn[] = $result;
 					}
 					catch(Exception $e)
 					{
-						$this->consoleReturn[] = $e->getMessage();
-						$this->writeLog('Soap - Send Mail Problem: '.$e->getMessage());
+						$return = $e->getMessage();
+						$this->consoleReturn[] = $return;
+						
+						// Check for error logging
+						if($this->debug == TRUE)
+						{
+							$this->debugLog[] = 'Server Error Response: '.$return;					
+						}
 					}
 				}
 			}
-			else
+			else # A single Command
 			{
+				// Check for error logging
+				if($this->debug == TRUE)
+				{
+					$this->debugLog[] = 'Got Command: '.$cmd;					
+				}
+				
 				try
-				{				
+				{		
 					$result = $client->executeCommand(new SoapParam($command, "command"));
 					$this->consoleReturn[] = $result;
 				}
 				catch(Exception $e)
 				{
-					$this->consoleReturn[] = $e->getMessage();
-					$this->writeLog('Soap - Send Mail Problem: '.$e->getMessage());
+					$return = $e->getMessage();
+					$this->consoleReturn[] = $return;
+					
+					// Check for error logging
+					if($this->debug == TRUE)
+					{
+						$this->debugLog[] = 'Server Error Response: '.$return;					
+					}
 				}
+			}
+			// Check for error logging
+			if($this->debug == TRUE)
+			{
+				$this->writeDebugLog();
 			}
 			return 1;
 		}
@@ -184,7 +337,7 @@ class RA
 // Setups the Soap Handle	
 	private function soapHandle($shost, $remote)
 	{
-		global $Config, $DB;
+		global $Config;
 		if($Config->get('emulator') == 'mangos')
 		{
 			$client = new SoapClient(NULL,
@@ -196,7 +349,7 @@ class RA
 			"password" => $remote[3]
 			));
 		}
-		elseif($Config->get('emulator') == 'trinity')
+		else
 		{
 			$client = new SoapClient(NULL,
 			array(
@@ -223,9 +376,13 @@ class RA
 	function send($command, $realm)
 	{
 		global $user, $Config, $DB;
+		
+		// Get the remote access information from the realm database
 		$get_remote = $DB->selectRow("SELECT * FROM `realmlist` WHERE id='".$realm."'");
 		$remote = explode(';', $get_remote['ra_info']);
 		$shost = $get_remote['address'];
+		
+		// Make sure the remote access type is either 1 or 0
 		if($remote[0] == 0 || $remote[0] == 1)
 		{
 			$result = $this->executeCommand($remote[0], $shost, $remote, $command);

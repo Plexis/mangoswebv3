@@ -78,6 +78,13 @@ $DB = new Database(
 	$Config->getDbInfo('db_password'), 
 	$Config->getDbInfo('db_name')
 	);
+
+// Check the database status. 0 = cannot connect, 1 = success, 2 = DB doesnt exist
+if($DB->status() != 1)
+{
+	echo "Cannot connect to the Realm database. Please make sure you have run the installer to properly set the DB info in the database.";
+	die();
+}
 	
 // Make an array from `dbinfo` column for the selected realm..
 $DB_info = $DB->selectRow("SELECT * FROM realmlist WHERE id='".$GLOBALS['cur_selected_realm']."'");
@@ -101,7 +108,7 @@ $Realm_DB_Info = array(
 // Free up memory.
 unset($dbinfo, $DB_info); 
 
-// Establish the Character DB connection
+// === Establish the Character DB connection === //
 $CDB = new Database(
 	$Realm_DB_Info['char_db_host'],
 	$Realm_DB_Info['char_db_port'],
@@ -110,7 +117,15 @@ $CDB = new Database(
 	$Realm_DB_Info['char_db_name']
 	);
 
-// Establish the World DB connection	
+// Check the CDB status. 0 = cannot connect, 1 = success, 2 = DB doesnt exist
+if($CDB->status() != 1)
+{
+	echo "Cannot connect to the Character database. Please make sure you have this realm setup successfully in the Admin Panel. 
+	Delete your cookies to reset realm selection back to default";
+	die();
+}
+	
+// === Establish the World DB connection === //	
 $WDB = new Database(
 	$Realm_DB_Info['w_db_host'],
 	$Realm_DB_Info['w_db_port'],
@@ -118,6 +133,14 @@ $WDB = new Database(
 	$Realm_DB_Info['w_db_password'],
 	$Realm_DB_Info['w_db_name']
 	);
+
+// Check the CDB status. 0 = cannot connect, 1 = success, 2 = DB doesnt exist
+if($WDB->status() != 1)
+{
+	echo "Cannot connect to the World database. Please make sure you have this realm setup successfully in the Admin Panel. 
+	Delete your cookies to reset realm selection back to default";
+	die();
+}
 	
 // Free up memory
 unset($Realm_DB_Info);
@@ -128,7 +151,6 @@ unset($Realm_DB_Info);
 $Account = new Account();
 $user = $Account->user;
 $user['cur_selected_realm'] = $GLOBALS['cur_selected_realm'];
-
 
 /***************************************************************
  * Load the Template class and setup the template system

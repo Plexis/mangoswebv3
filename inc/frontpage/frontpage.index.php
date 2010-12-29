@@ -28,7 +28,7 @@ if($Config->get('enable_cache') == 0 || ($Config->get('enable_cache') == 1 && $C
 {
 	$alltopics = $DB->select("SELECT * FROM mw_news ORDER BY `id` DESC");
 	$servers = array();
-	$multirealms = $DB->select("SELECT * FROM `realmlist` ORDER BY `id` ASC");
+	$multirealms = getRealmlist();
 	foreach($multirealms as $realmnow_arr)
 	{
 		if($Config->get('fp_serverinfo') == 1)

@@ -53,6 +53,7 @@ $realm_timezone_def = array(
 
 //	************************************************************	
 // Set up out messages like error and success boxes
+
 function output_message($type, $text, $file='', $line='')
 {
     if($file)$text .= "\n<br>in file: $file";
@@ -62,6 +63,7 @@ function output_message($type, $text, $file='', $line='')
 
 //	************************************************************	
 // Custom Error Handler
+
 function customError($errno, $errstr)
 {
 	echo "<div class=\"error\">";
@@ -204,7 +206,7 @@ function print_gold($gvar)
 //===== MAIL FUNCTIONS =====//
 
 // Send Mail
-function send_email($goingto,$toname,$sbj,$messg) 
+function send_email($goingto, $toname, $sbj, $messg) 
 {
 	global $Config;
 	define('DISPLAY_XPM4_ERRORS', true); // display XPM4 errors
@@ -391,9 +393,9 @@ function random_string($counts)
 {
     $str = "abcdefghijklmnopqrstuvwxyz"; //Count 0-25
     $o = 0;
-    for($i=0;$i<$counts;$i++)
+    for($i=0; $i < $counts; $i++)
 	{
-        if ($o == 1)
+        if($o == 1)
 		{
             $output .= rand(0,9);
             $o = 0;
@@ -414,10 +416,10 @@ function random_string($counts)
 
 function my_preview($text,$userlevel=0) 
 {
-    if($userlevel<1)
+    if($userlevel < 1)
 	{
 		$text = htmlspecialchars($text);
-		if (get_magic_quotes_gpc())
+		if(get_magic_quotes_gpc())
 		{
 			$text = stripslashes($text);
 		}
@@ -497,7 +499,7 @@ function mw_url($page, $subpage = NULL, $params = NULL, $encodeentities = TRUE)
 			$url = "?p=$page";
 		}
 	}
-    if (is_array($params)) 
+    if(is_array($params)) 
 	{
         foreach($params as $key=>$value) 
 		{
@@ -514,12 +516,12 @@ function paginate($num_pages, $cur_page, $link_to)
 {
 	$pages = array();
     $link_to_all = false;
-    if ($cur_page == -1)
+    if($cur_page == -1)
     {
         $cur_page = 1;
         $link_to_all = true;
     }
-    if ($num_pages <= 1)
+    if($num_pages <= 1)
 	{
         $pages = array('1');
 	}
@@ -531,17 +533,17 @@ function paginate($num_pages, $cur_page, $link_to)
             $tp = $i*10;
             $pages[$tp] = "<a href='$link_to&page=$tp'>$tp</a>";
         }
-        if ($cur_page > 3)
+        if($cur_page > 3)
         {
             $pages[1] = "<a href='$link_to&p=1'>1</a>";
         }
-        for ($current = $cur_page - 2, $stop = $cur_page + 3; $current < $stop; $current++)
+        for($current = $cur_page - 2, $stop = $cur_page + 3; $current < $stop; $current++)
         {
-            if ($current < 1 || $current > $num_pages) 
+            if($current < 1 || $current > $num_pages) 
 			{
                 continue;
             } 
-			elseif ($current != $cur_page || $link_to_all) 
+			elseif($current != $cur_page || $link_to_all) 
 			{
                 $pages[$current] = "<a href='$link_to&page=$current'>$current</a>";
             } 
@@ -550,7 +552,7 @@ function paginate($num_pages, $cur_page, $link_to)
                 $pages[$current] = '['.$current.']';
             }
         }
-        if ($cur_page <= ($num_pages-3))
+        if($cur_page <= ($num_pages-3))
         {
             $pages[$num_pages] = "<a href='$link_to&page=$num_pages'>$num_pages</a>";
         }

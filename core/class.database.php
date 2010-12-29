@@ -10,13 +10,17 @@ class Database
     );
     private $mysql;
 
-//	************************************************************
-// Creates the connection to the mysql database, selects the posted DB
+/************************************************************
+* Creates the connection to the mysql database, selects the posted DB
+* Returns 0 if unable to connect to the database
+* Returns 2 if the Database does not exist
+* Returns TRUE on success
+*/
 
     public function __construct($db_host, $db_port, $db_user, $db_pass, $db_name)
     {
-        $this->mysql = @mysql_connect($db_host.":".$db_port, $db_user, $db_pass, true) or die("Cant connect to \"".$db_name."\" Database!");
-        mysql_select_db($db_name,$this->mysql) or die("Cant select database \"".$db_name."\" Database!\"");
+        $this->mysql = @mysql_connect($db_host.":".$db_port, $db_user, $db_pass, true);
+        $this->selected_database = @mysql_select_db($db_name, $this->mysql);
 		return TRUE;
     }
 
@@ -27,6 +31,25 @@ class Database
     {
         @mysql_close($this->mysql) or die(mysql_error());
     }
+	
+/************************************************************
+* Checks the connection to the mysql database, selects the posted DB
+* Returns 0 if unable to connect to the database
+* Returns 2 if the Database does not exist
+* Returns TRUE on success
+*/	
+	public function status()
+	{
+		if(!$this->mysql)
+		{
+			return 0;
+		}
+		if(!$this->selected_database)
+		{
+			return 2;
+		}
+		return 1;
+	}
 
 //	************************************************************
 // Query function is best used for INSERT and UPDATE functions

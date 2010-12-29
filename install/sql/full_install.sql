@@ -219,11 +219,11 @@ INSERT INTO `mw_menu_items` VALUES ('7', 'Shop', '?p=shop', '3', '2', '0', '6');
 INSERT INTO `mw_menu_items` VALUES ('2', 'Manage Account', '?p=account', '2', '2', '0', '7');
 INSERT INTO `mw_menu_items` VALUES ('4', 'Server Characters', '?p=server&sub=chars', '2', '1', '0', '8');
 INSERT INTO `mw_menu_items` VALUES ('4', 'Players Online', '?p=server&sub=playersonline', '3', '1', '0', '9');
-INSERT INTO `mw_menu_items` VALUES ('8', 'FAQ', '?p=server&sub=faq', '1', '1', '0', '10');
+INSERT INTO `mw_menu_items` VALUES ('8', 'FAQ', '?p=support&sub=faq', '1', '1', '0', '10');
 INSERT INTO `mw_menu_items` VALUES ('7', 'Donate', '?p=donate', '2', '2', '0', '11');
 INSERT INTO `mw_menu_items` VALUES ('4', 'Realm Status', '?p=server&sub=realmstatus', '1', '1', '0', '12');
 INSERT INTO `mw_menu_items` VALUES ('2', 'Account Restore', '?p=account&sub=restore', '2', '1', '1', '13');
-INSERT INTO `mw_menu_items` VALUES ('4', 'Top Kills', '?p=server&sub=topkills', '1', '1', '0', '1');
+INSERT INTO `mw_menu_items` VALUES ('4', 'Top Kills', '?p=server&sub=topkills', '1', '1', '0', '14');
 
 -- ----------------------------
 -- Table structure for `mw_news`
@@ -395,7 +395,7 @@ ALTER TABLE `mw_shop_items` DEFAULT CHARACTER SET 'utf8' COLLATE 'utf8_unicode_c
 -- file gets applied again, it gets an error here.
 --
 ALTER TABLE `realmlist`
-ADD `site_enabled` int(3) NOT NULL default '1';
+ADD `site_enabled` int(3) NOT NULL default '0';
 
 ALTER TABLE `realmlist`
 ADD `ra_info` VARCHAR( 355 ) NOT NULL default 'type;port;username;password';

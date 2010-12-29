@@ -407,7 +407,7 @@ function output_message($type, $text)
 					
 					// Extra sql query with db settings
 					$dbinfo = $_POST['char_db_host'].";".$_POST['char_db_port'].";".$_POST['char_db_username'].";".$_POST['char_db_password'].";".$_POST['char_db_name'].";".$_POST['w_db_host'].";".$_POST['w_db_port'].";".$_POST['w_db_username'].";".$_POST['w_db_password'].";".$_POST['w_db_name'].";";
-					mysql_query("UPDATE `realmlist` SET `dbinfo` = '".$dbinfo."' WHERE `id` = 1 LIMIT 1") or die('<div class="error">'.mysql_error().'</div>');
+					mysql_query("UPDATE `realmlist` SET `dbinfo` = '".$dbinfo."', `site_enabled`=1 WHERE `id` = 1 LIMIT 1") or die('<div class="error">'.mysql_error().'</div>');
 					
 					output_message('success', 'Successfully Connected to Character and World DB\'s');
 				?>

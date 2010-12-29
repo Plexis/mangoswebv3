@@ -7,8 +7,8 @@
 
 class Core
 {
-	var $version = '3.0.0';
-	var $version_date = '2010-12-20, 10:13 am';
+	var $version = '3.0.1';
+	var $version_date = '2010-12-29, 11:04 am';
 	var $exp_dbversion = '1.0a';
 
 	function Core()
@@ -25,18 +25,20 @@ class Core
 		$this->Cache_Refresh_Time = (int)$Config->get('cache_expire_time');
 		$this->copyright = 'Powered by MangosWeb Enhanced version ' . $this->version . ' &copy; 2009-2010, <a href="http://keyswow.com">KeysWow Dev Team</a>.
 			All Rights Reserved.';
-
+	
 		// Fill in the config with the proper directory info if the directory info is wrong
 		define('SITE_DIR', dirname( $_SERVER['PHP_SELF'] ).'/');
 		define('PRE_SITE_HREF', str_replace('//', '/', SITE_DIR));
 		define('SITE_HREF', stripslashes(PRE_SITE_HREF));
 		define('SITE_BASE_HREF', 'http://'.$_SERVER["HTTP_HOST"]. SITE_HREF);
+		
+		// If the site href doesnt match whats in the config, we need to set it
 		if($Config->get('site_base_href') != SITE_BASE_HREF)
 		{
 			$Config->set('site_base_href', SITE_BASE_HREF);
 			$Config->set('site_href', SITE_HREF);
 			$Config->Save();
-		}
+		}	
 		return TRUE;
 	}
 	
@@ -54,10 +56,13 @@ class Core
 		$GLOBALS['user_cur_lang'] = '';
 		$GLOBALS['messages'] = '';		// For server messages
 		$GLOBALS['redirect'] = '';		// For the redirect function, uses <meta> tags
+		$GLOBALS['debug_messages'] = array();
 		$GLOBALS['cur_selected_realm'] = '';
 		
 		// === Load the languages and set users language === //
 		$languages = explode(",", $Config->get('available_lang'));
+		
+		// Check if a language cookie is set
 		if(isset($_COOKIE['Language'])) 
 		{
 			// If the cookie is set, we need to make sure the language file still exists
@@ -110,7 +115,7 @@ class Core
 		$ret = array('allow_url_fopen' => $allow_url_fopen, 'allow_fsockopen' => $fsock);
 		return $ret;
 	}
-	
+
 	
 // === CACHING FUNCTIONS === //
 

@@ -98,9 +98,8 @@
   </div>
   <script src="<?php echo $Template['path']; ?>/js/tooltip.js" type="text/javascript"></script>
   <!-- TOOLTIP end --> 
-<?php 
-// Echo out redirect scripts here.
-echo $GLOBALS['redirect'];
+<?php
+$realms = array(); 
 $realms = getRealmlist();
 $languages = explode(",", $Config->get('available_lang'));
 ?>

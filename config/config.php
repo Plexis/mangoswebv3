@@ -72,4 +72,5 @@ $module_phpbb3 = 0;
 $module_phpbb3_path = 'forums/';
 $module_vbulletin = 0;
 $module_vbulletin_path = 'forums/';
+$enable_debugging = 1;
 ?>

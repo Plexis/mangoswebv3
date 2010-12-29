@@ -6,18 +6,34 @@
 
 <img src="<?php echo $Template['path']; ?>/images/realmstatus_header-left.jpg" border="0" width="50%" height="135" /><img src="<?php echo $Template['path']; ?>/images/realmstatus_background.jpg" border="0" width="50%" height="135" />
 <br />
-<?php builddiv_start(0) ?>
 
+<!--  Build the top div -->
+<?php builddiv_start(0); ?>
+
+<!-- Page Desc as well as some template related php -->
 <div style="padding:10px 20px 10px 20px;">
 	<?php
-		$up = '<img src="'.$Template['path'].'/images/icons/uparrow2.gif" style="vertical-align: bottom;" height="19" width="18" alt=""/> <b style="color: rgb(35, 67, 3);">' . $lang['up'] . '</b>';
-		$down = '<img src="'.$Template['path'].'/images/icons/downarrow2.gif" style="vertical-align: bottom;" height="19" width="18" alt=""/> <b style="color: rgb(102, 13, 2);">' . $lang['down'] . '</b>';
+		// Define the online image and offline image paths
+		$online_image = '<img src="'.$Template['path'].'/images/icons/uparrow2.gif" style="vertical-align: bottom;" height="19" width="18" alt=""/>';
+		$offline_image = '<img src="'.$Template['path'].'/images/icons/downarrow2.gif" style="vertical-align: bottom;" height="19" width="18" alt=""/>';
+		
+		// $up and $down are used to place the images into the description later on.
+		$up = $online_image.'<b style="color: rgb(35, 67, 3);">' . $lang['up'] . '</b>';
+		$down = $offline_image.'<b style="color: rgb(102, 13, 2);">' . $lang['down'] . '</b>';
 
-		$realmstatusforum = '<a href="'.$Config->get('site_forums').'">' . $lang['realm_status_forum'] . '</a>';
+		// === Here we replace a few words in the page description with images and links === //
+		
+		// Start by defining the realm status forum link from the config file
+		$realm_status_forum = '<a href="'.$Config->get('site_forums').'">' . $lang['realm_status_forum'] . '</a>';
 		$desc = $PAGE_DESC;
+		
+		// Now we replace [up] with the $up image and description, [down] with the $down image and desc,
+		// and finally, replace the [realm_status_forum] with the forum link ($realm_status_forum)
 		$desc = str_replace('[up]', $up, $desc);
 		$desc = str_replace('[down]', $down, $desc);
-		$desc = str_replace('[realm_status_forum]', $realmstatusforum, $desc);
+		$desc = str_replace('[realm_status_forum]', $realm_status_forum, $desc);
+		
+		// Echo the new page description with all the replaced values
 		echo $desc;
 	?>
 </div>
@@ -42,24 +58,24 @@ write_metalborder_header(); ?>
         </tr>
 <?php 
 		foreach($Realm as $item) 
-		{ ?>
+		{
+			// If the satus is online, dispaly the online image, else, display offline image
+			if($item['status'] == 'Online')
+			{
+				$status = $online_image;
+			}
+			else
+			{
+				$status = $offline_image;
+			} ?>
 			<tr>
-				<td class="serverStatus<?php echo $item['res_color'] ?>" align="center"><img src="<?php echo $item['img']; ?>" height='18' width='18' alt=""/></td>
-				<td width="168" class="serverStatus<?php echo $item['res_color'] ?>"><center>
-					<?php 	
-						if($item['uptime'] != 0) 
-						{ 
-							print_time(parse_time($item['uptime'])); 
-						}
-						else
-						{
-							echo "N/A";
-						}
-					?>
-				</center></td>
+				<td class="serverStatus<?php echo $item['res_color'] ?>" align="center"><?php echo $status; ?></td>
+				<td width="168" class="serverStatus<?php echo $item['res_color'] ?>"><center><?php echo $item['uptime']; ?></center></td>
 				<td width="802" class="serverStatus<?php echo $item['res_color'] ?>"><b style='color: rgb(35, 67, 3);'><?php echo $item['name']; ?></b></td>
 				<td class="serverStatus<?php echo $item['res_color'] ?>" align="center"><b style='color: rgb(102, 13, 2);'><?php echo $item['type']; ?></b></td>
-				<td class="serverStatus<?php echo $item['res_color'] ?>" align="center"><b style='color: rgb(35, 67, 3);'><?php echo $item['pop']." (".population_view($item['pop']).")"; ?></b></td>
+				<td class="serverStatus<?php echo $item['res_color'] ?>" align="center">
+					<b style='color: rgb(35, 67, 3);'><?php echo $item['population']." (".population_view($item['population']).")"; ?></b>
+				</td>
 			</tr>
 <?php 
 		} ?>
