@@ -1,8 +1,14 @@
 <?php
-/********************************************************************************************************
-* 	RA class for MangosWebSDL. Originally from TrinMangSDK  Re-written and added SOAP functions by 		*
-*	Steven Wilson (Wilson212). Use the send function only!																			*
-/********************************************************************************************************/
+/****************************************************************************/
+/*  					< MangosWeb Enhanced SDL > 							*/
+/*              Copyright (C) <2009 - 2011>  <Wilson212>                    */
+/*						  < http://keyswow.com >							*/
+/*																			*/
+/****************************************************************************/
+/*																			*/
+/*  Character Class for MangosWeb v3. Some functions used from TrinMangSDK 	*/
+/*				   http://code.google.com/p/trinmangsdk/					*/
+/****************************************************************************/
 
 class RA
 {

@@ -1,10 +1,11 @@
 <?php
-/* 	
-	MangosWeb Template class, Written by Wilson212. The point
-	of this template class is to set the cookies, and read the 
-	cookies to determine if the user has already chosen a 
-	template or not in the past.
-*/
+/****************************************************************************/
+/*  					< MangosWeb Enhanced v3 >  							*/
+/*              Copyright (C) <2009 - 2011>  <Wilson212>                    */
+/*						  < http://keyswow.com >							*/
+/*																			*/
+/*			Original MangosWeb (C) 2007, Sasha, Nafe, TGM, Peec				*/
+/****************************************************************************/
 
 
 class MangosTemplate

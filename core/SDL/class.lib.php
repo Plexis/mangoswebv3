@@ -1,9 +1,10 @@
 <?php
-/********************************************/
-/*   Main Library Class for MangosWeb SDL   */
-/* This Library is written by Steven Wilson */
-/* 	 Copyright 2010, All Rights Reserved    */
-/********************************************/
+/****************************************************************************/
+/*  					< MangosWeb Enhanced SDL > 							*/
+/*              Copyright (C) <2009 - 2011>  <Wilson212>                    */
+/*						  < http://keyswow.com >							*/
+/*																			*/
+/****************************************************************************/
 
 class Lib
 {

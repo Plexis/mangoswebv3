@@ -1,6 +1,14 @@
 <?php
-// Account class for MangosWebSDL written by Steven Wilson, aka Wilson212
-// Some functions used from the original MangosWeb AUTH Class
+/****************************************************************************/
+/*  					< MangosWeb Enhanced SDL > 							*/
+/*              Copyright (C) <2009 - 2011>  <Wilson212>                    */
+/*						  < http://keyswow.com >							*/
+/*																			*/
+/****************************************************************************/
+/*																			*/
+/*	  Account Class for MangosWeb v3. Some functions used from Original 	*/
+/*				MangosWeb  (C) 2007, Sasha, Nafe, TGM, Peec					*/
+/****************************************************************************/
 
 class Account
 {

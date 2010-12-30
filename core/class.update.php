@@ -1,9 +1,16 @@
 <?php
-/*******************************************************************/
-/*    Update class for MangosWeb Enhanced. You the user are NOT    */
-/*     allowed to copy any of this code, and/or use it for any 	   */
-/*         purpose other than to update MangosWeb Enhanced         */
-/*******************************************************************/
+/****************************************************************************/
+/*  					< MangosWeb Enhanced v3 >  							*/
+/*              Copyright (C) <2009 - 2011>  <Wilson212>                    */
+/*						  < http://keyswow.com >							*/
+/*																			*/
+/*			Original MangosWeb (C) 2007, Sasha, Nafe, TGM, Peec				*/
+/****************************************************************************/
+/*																			*/
+/*  Update class for MangosWeb Enhanced. You the user are NOT allowed to	*/ 
+/*	copy any of this code, and/or use it for any purpose other than to 		*/
+/*	update MangosWeb Enhanced.        										*/
+/****************************************************************************/
 
 class Update
 {

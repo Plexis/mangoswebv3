@@ -1,14 +1,22 @@
 <?php
-/********************************************************************************************************
-* 	DO NOT change the copyright in this file. Modification to this copyright will result in a break in  *
-* 	agreement terms. Also, any modification to this Copyright, or version info. will result in loss of  *
-*  all support by KeysWoW																				*
-/********************************************************************************************************/
+/****************************************************************************/
+/*  					< MangosWeb Enhanced v3 >  							*/
+/*              Copyright (C) <2009 - 2011>  <Wilson212>                    */
+/*						  < http://keyswow.com >							*/
+/*																			*/
+/*			Original MangosWeb (C) 2007, Sasha, Nafe, TGM, Peec				*/
+/****************************************************************************/
+/*																			*/
+/* 	DO NOT change the copyright in this file. Modification to the copyright	*/
+/*	will result in a break in agreement terms. Also, any modification to 	*/
+/*	this Copyright, or version info. will result in loss of all support by 	*/
+/*	KeysWoW																	*/
+/***************************************************************************/
 
 class Core
 {
-	var $version = '3.0.1';
-	var $version_date = '2010-12-29, 11:04 am';
+	var $version = '3.0.2';
+	var $version_date = '2010-12-30, 2:40 pm';
 	var $exp_dbversion = '1.0a';
 
 	function Core()
@@ -23,7 +31,7 @@ class Core
 	{
 		global $Config;
 		$this->Cache_Refresh_Time = (int)$Config->get('cache_expire_time');
-		$this->copyright = 'Powered by MangosWeb Enhanced version ' . $this->version . ' &copy; 2009-2010, <a href="http://keyswow.com">KeysWow Dev Team</a>.
+		$this->copyright = 'Powered by MangosWeb Enhanced version ' . $this->version . ' &copy; 2009-2011, <a href="http://keyswow.com">KeysWow Dev Team</a>.
 			All Rights Reserved.';
 	
 		// Fill in the config with the proper directory info if the directory info is wrong

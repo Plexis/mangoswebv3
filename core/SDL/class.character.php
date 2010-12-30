@@ -1,5 +1,15 @@
 <?php
-// Character class for MangosWebSDL written by Steven Wilson, aka Wilson212
+/****************************************************************************/
+/*  					< MangosWeb Enhanced SDL > 							*/
+/*              Copyright (C) <2009 - 2011>  <Wilson212>                    */
+/*						  < http://keyswow.com >							*/
+/*																			*/
+/****************************************************************************/
+/*																			*/
+/*  Character Class for MangosWeb v3. Some functions used from TrinMangSDK 	*/
+/*				   http://code.google.com/p/trinmangsdk/					*/
+/****************************************************************************/
+
 class Character
 {
 	function __construct()
