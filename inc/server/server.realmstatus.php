@@ -42,42 +42,46 @@ function parse_time($number)
 function print_time($time_array) 
 {
 	global $lang;
+	
 	$count = 0;
+	$return = '';
+	
 	if($time_array['d'] > 0) 
 	{
-		echo $time_array['d'];
-		echo "Days";
+		$return .= $time_array['d'];
+		$return .= " Days";
 		$count++;
 	}
 	if($time_array['h'] > 0) 
 	{
         if ($count > 0) 
 		{
-			echo ',';
+			$return .= ', ';
 		}
-		echo $time_array['h'];
-		echo "h";
+		$return .= $time_array['h'];
+		$return .= "h";
 		$count++;
 	}
 	if($time_array['m'] > 0) 
 	{
 		if ($count > 0)
 		{
-			echo ',';
+			$return .= ', ';
 		}
-		echo $time_array['m'];
-		echo "m";
+		$return .= $time_array['m'];
+		$return .= "m";
 		$count++;
 	}
 	if($time_array['s'] > 0) 
 	{
-		if ($count > 0)
+		if ($count < 2)
 		{
-			echo ',';
+			$return .= ', ';
+			$return .= $time_array['s'];
+			$return .= "s";
 		}
-		echo $time_array['s'];
-		echo "s";
 	}
+	return $return;
 }
 
 // ************************************************************
@@ -146,7 +150,7 @@ foreach($Realm as $i => $result)
 	$realm_num = $result['id'];
 	
 	// Check the realm status using the check_port_status function
-    if(check_port_status($result['address'], $result['port']) == TRUE)
+    if(check_port_status($result['address'], $result['port'], 2) == TRUE)
     {
 		// res image is the up arrow pretty much
         $res_img = 'Online';
@@ -155,7 +159,8 @@ foreach($Realm as $i => $result)
         $population = $CDB_EXTRA->count("SELECT COUNT(*) FROM `characters` WHERE online=1");
 		
 		// Get the server uptime
-        $uptime = time() - $DB->selectCell("SELECT `starttime` FROM `uptime` WHERE `realmid`='$realm_num' ORDER BY `starttime` DESC LIMIT 1");
+		$start_time = $DB->selectCell("SELECT `starttime` FROM `uptime` WHERE `realmid`='".$realm_num."' ORDER BY `starttime` DESC LIMIT 1");
+        $uptime = (time() - $start_time);
     }
     else
     {

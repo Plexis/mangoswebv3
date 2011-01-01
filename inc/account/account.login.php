@@ -42,44 +42,7 @@ if(isset($_POST['action']))
 		
 		// If account login was successful
 		if($Login == 1)
-		{
-			// === Start of Forum Bridges. User login must be successfulll first === //
-			
-			// Check to see if we are using the phpbb3 registration module
-			if($Config->get('module_phpbb3') == 1)
-			{
-				include('core/lib/class.phpbb.php');
-				$phpbb = new phpbb($Config->get('module_phpbb3_path'), 'php');
-				
-				// If the user doesnt exist in the DB, then create the account
-				if($phpbb->get_user_id_from_name($login) == FALSE)
-				{
-					$phpbb_vars = array(
-						"username" => $_POST['login'], 
-						"user_password" => $_POST['pass'], 
-						"user_email" => $EMAIL, 
-						"group_id" => "2"
-					);
-					$phpbb->user_add($phpbb_vars);
-				}
-			}
-			
-			// Else, if the phpbb3 module is not used, check to see if the vbulletin module is used
-			elseif($Config->get('module_vbulletin') == 1)
-			{
-				include('core/lib/class.vbulletin-bridge.php');
-				$vb = new vBulletin_Bridge();
-				
-				// Lets check to see if the user exists
-				$check = $vb->fetch_userinfo_from_username($login);
-				if(!$check)
-				{
-					// Register new user
-					$userdata = array('username' => $login, 'password' => $_POST['pass'], 'email' => $EMAIL);
-					@$vb->register_newuser($userdata, TRUE);
-				}
-			}
-			
+		{	
 			// Once finished, redirect to the page we came from
 			redirect($_SERVER['HTTP_REFERER'],1);
 		}

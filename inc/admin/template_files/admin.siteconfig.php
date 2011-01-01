@@ -728,7 +728,7 @@
 			</table>
 			<br />
 			<?php
-				output_message('info', 'Notice: Only 1 forum Integration module can be enabled at a time.');
+				output_message('warning', 'Forum bridges have been disabled due to compatibility issues.');
 			?>
 			<br />
 			<div class="field">

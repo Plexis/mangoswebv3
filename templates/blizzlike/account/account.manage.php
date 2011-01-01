@@ -240,7 +240,7 @@ else
 										// We must check to see if they are set. If so then we need to
 										// show a success message. Secret questions are NOT meant to be changed
 										// If they arent set, then show the form to set them
-										if($profile['secret_q1'] != '')
+										if($profile['secret_q1'] != '' || $profile['secret_q1'] != 'Disabled')
 										{
 											output_message('success', $lang['secretq_set']);
 											echo "<br />";

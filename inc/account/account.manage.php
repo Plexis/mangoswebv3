@@ -77,47 +77,7 @@ function changePass()
 	{
 		if($Account->setPassword($user['id'], $newpass) == TRUE)
 		{
-		
-			// === Start of Forum Bridges === //
-			
-			// phpbb3
-			if($Config->get('module_phpbb3') == 1)
-			{
-				include('core/lib/class.phpbb.php');
-				$phpbb = new phpbb($Config->get('module_phpbb3_path'), 'php');
-				
-				$phpbb_vars = array('username' => $user['username'], 'password' => $_POST['new_pass']);
-				$phpbb_result = @$phpbb->user_change_password($phpbb_vars);
-				if($phpbb_result == 'SUCCESS')
-				{
-					return TRUE;
-				}
-				else
-				{					
-					output_message('warning', 'Unable to change forum password!');
-					return TRUE;
-				}
-			}
-			
-			// Else, if the phpbb3 module is not used, check to see if the vbulletin module is used
-			elseif($Config->get('module_vbulletin') == 1)
-			{
-				include('core/lib/class.vbulletin-bridge.php');
-				$vb = new vBulletin_Bridge();
-				
-				// Get user info, and change the password
-				$vbuser = fetch_userinfo_from_username($user['username']);
-				$request = $vb->change_password($vbuser['id'], $vbuser['activationid'], $_POST['new_pass']);
-				if($request == FALSE) # FALSE as in "no errors"
-				{
-					return TRUE;
-				}
-				else
-				{
-					output_message('warning', 'Unable to change forum password!');
-					return TRUE;
-				}
-			}
+			output_message('success', $lang['change_pass_success']);
 		}
 		else
 		{

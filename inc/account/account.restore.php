@@ -79,7 +79,7 @@ if($_POST['retr_login'] && $_POST['retr_email'] && $_POST['secretq1'] && $_POST[
 		$rp_sq2 = strip_if_magic_quotes($_POST['secretq2']);
 		$rp_sa1 = strip_if_magic_quotes($_POST['secreta1']);
 		$rp_sa2 = strip_if_magic_quotes($_POST['secreta2']);
-		$we = $DB->selectRow("SELECT account_id FROM `mw_account_extend` WHERE account_id='".$username." AND secretq1='".$rp_sq1."' AND secretq2='".$rp_sq2."' AND secreta1='".$rp_sa1."' AND secreta2='".$rp_sa2."'");
+		$we = $DB->selectRow("SELECT account_id FROM `mw_account_extend` WHERE account_id='".$username."' AND secret_q1='".$rp_sq1."' AND secret_q2='".$rp_sq2."' AND secret_a1='".$rp_sa1."' AND secret_a2='".$rp_sa2."'");
 		if($we !== FALSE)
 		{
 			$pas = random_string(7);
